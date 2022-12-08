@@ -29,6 +29,10 @@ function setupSocketAPI(http) {
             // emits only to sockets in the same room
             gIo.to(socket.myTopic).emit('chat-add-comments', comments)
         })
+        socket.on('load-curr-board', boardId => {
+            gIo.to(socket.myTopic).emit('load-curr-board', boardId)
+
+        })
         socket.on('user-watch', userId => {
             logger.info(`user-watch from socket [id: ${socket.id}], on user ${userId}`)
             socket.join('watching:' + userId)

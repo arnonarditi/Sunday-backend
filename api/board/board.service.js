@@ -22,14 +22,16 @@ async function query() {
 async function getBoardById(boardId) {
     try {
         const collection = await dbService.getCollection('board')
+        // todo something wrong over here
         const board = collection.findOne({ _id: ObjectId(boardId) })
+      
         return board
     } catch (err) {
         logger.error(`while finding board ${boardId}`, err)
         throw err
     }
 }
-// by arnon:working in postman 6.12
+
 async function update(board) {
     try {
         var id = ObjectId(board._id)
@@ -37,10 +39,9 @@ async function update(board) {
         delete board._id
         const collection = await dbService.getCollection('board')
 
-
         await collection.updateOne({ _id: id }, { $set: { ...board } })
         board._id = temp
-        return board
+        return
     } catch (err) {
         logger.error(`cannot update board ${board._id}`, err)
         throw err

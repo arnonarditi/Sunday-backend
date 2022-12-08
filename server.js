@@ -11,6 +11,7 @@ app.use(cookieParser())
 app.use(express.json())
 // app.use(express.static('public'))
 
+// NODE_ENV
 if (process.env.NODE_ENV === 'production') {
     // Express serve static files on production environment
     app.use(express.static(path.resolve(__dirname, 'public')))
@@ -24,23 +25,17 @@ if (process.env.NODE_ENV === 'production') {
     app.use(cors(corsOptions))
 }
 
+// routes
 const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
 const boardRoutes = require('./api/board/board.routes')
 const {setupSocketAPI} = require('./services/socket.service')
-// todo remove when got progress with sockets
-// const reviewRoutes = require('./api/review/review.routes')
 
-// routes
 const setupAsyncLocalStorage = require('./middlewares/setupAls.middleware')
 app.all('*', setupAsyncLocalStorage)
 
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
-
-// todo remove when got progress with sockets
-// app.use('/api/review', reviewRoutes)
-
 app.use('/api/board', boardRoutes)
 setupSocketAPI(http)
 
