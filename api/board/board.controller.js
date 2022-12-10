@@ -45,13 +45,12 @@ async function updateBoard(req, res) {
 }
 // by arnon:not necc meanwhile 6.12 
 async function addBoard(req, res) {
-  const {loggedinUser} = req
 
   try {
     const board = req.body
-    board.owner = loggedinUser
-    const addedBoard = await boardService.add(board)
-    res.json(addedBoard)
+    // board.owner = loggedinUser
+    const boardId = await boardService.add(board)
+    res.json(boardId)
   } catch (err) {
     logger.error('Failed to add board', err)
     res.status(500).send({ err: 'Failed to add board' })
