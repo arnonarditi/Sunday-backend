@@ -11,7 +11,7 @@ module.exports = {
     update,
     add
 }
-// note-arnon working postman 7.12
+
 async function query() {
     try {
         const collection = await dbService.getCollection('user')
@@ -23,7 +23,6 @@ async function query() {
         throw err
     }
 }
-
 
 async function getById(userId) {
     try {
@@ -61,7 +60,7 @@ async function update(user) {
     try {
         // peek only updatable properties
         const userToSave = {
-            _id: ObjectId(user._id), // needed for the returnd obj
+            _id: ObjectId(user._id), 
             fullname: user.fullname,
             score: user.score,
         }
@@ -76,13 +75,12 @@ async function update(user) {
 
 async function add(user) {
     try {
-        // peek only updatable fields!
         const userToAdd = {
             username: user.username,
             password: user.password,
             fullname: user.fullname,
             imgUrl: user.imgUrl,
-            score: 100
+            color:'#8338ec'
         }
         const collection = await dbService.getCollection('user')
         await collection.insertOne(userToAdd)
