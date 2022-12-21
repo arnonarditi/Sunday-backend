@@ -1,7 +1,8 @@
 
 # Sunday
 
-Monday-clone app
+Full-Stack project - Monday-clone app.
+Prominent features: all-over D&D, Kanban, Dashboard, web-sockets.
 
 
 
@@ -9,7 +10,7 @@ Monday-clone app
 
 **Client:** VueJS,Vite
 
-**Server:** Node, Express
+**Server:** Node, Express,MongoDB
 
 
 ## Demo
