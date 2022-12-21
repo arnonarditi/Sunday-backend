@@ -2,6 +2,7 @@
 # Sunday
 
 Full-Stack project - Monday-clone app.
+
 Prominent features: all-over D&D, Kanban, Dashboard, web-sockets.
 
 
