@@ -3,7 +3,7 @@
 
 Full-Stack project - Monday-clone app.
 
-Prominent features: all-over D&D, kanban, dashboard, Socket.io.
+Prominent features: Socket.io,daynamic cmps, all-over D&D, kanban, dashboard.
 
 
 
