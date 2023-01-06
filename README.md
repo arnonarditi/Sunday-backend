@@ -11,7 +11,7 @@ auth middleware, cookies,
 
 all-over D&D(rows, columns, groups at the main-table ),
 
-kanban(mini Trello like origin), dashboard.
+kanban(mini Trello like origin), dashboard, etc.
 
 
 ## Tech Stack
