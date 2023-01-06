@@ -3,7 +3,9 @@
 
 Full-Stack project: Monday-clone app.
 
-Nice features: Socket.io, daynamic cmps,
+Some nice features:
+
+Socket.io, daynamic cmps,
 
 auth middleware, cookies,
 
