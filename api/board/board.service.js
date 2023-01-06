@@ -3,13 +3,8 @@ const logger = require('../../services/logger.service')
 const utilService = require('../../services/util.service')
 const ObjectId = require('mongodb').ObjectId
 
-// by arnon:working in postman 6.12
 async function query() {
     try {
-        //todo for now there is no filters on board
-        // const criteria = {
-        //     vendor: { $regex: filterBy.txt, $options: 'i' }
-        // }
         const collection = await dbService.getCollection('board')
         var boards = await collection.find().toArray()
         return boards
@@ -18,13 +13,12 @@ async function query() {
         throw err
     }
 }
-// by arnon:working in postman 6.12
+
 async function getBoardById(boardId) {
     try {
         const collection = await dbService.getCollection('board')
-        // todo something wrong over here
         const board = collection.findOne({ _id: ObjectId(boardId) })
-      
+
         return board
     } catch (err) {
         logger.error(`while finding board ${boardId}`, err)

@@ -2,7 +2,7 @@ const boardService = require('./board.service.js')
 
 const logger = require('../../services/logger.service')
 
-// by arnon:working in postman 6.12
+
 async function getBoards(req, res) {
   try {
     logger.debug('Getting Boards 9')
