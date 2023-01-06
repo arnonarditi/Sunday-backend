@@ -91,24 +91,7 @@ async function add(user) {
     }
 }
 
-// function _buildCriteria(filterBy) {
-//     const criteria = {}
-//     if (filterBy.txt) {
-//         const txtCriteria = { $regex: filterBy.txt, $options: 'i' }
-//         criteria.$or = [
-//             {
-//                 username: txtCriteria
-//             },
-//             {
-//                 fullname: txtCriteria
-//             }
-//         ]
-//     }
-//     if (filterBy.minBalance) {
-//         criteria.score = { $gte: filterBy.minBalance }
-//     }
-//     return criteria
-// }
+
 
 
 

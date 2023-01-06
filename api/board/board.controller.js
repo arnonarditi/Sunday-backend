@@ -6,10 +6,7 @@ const logger = require('../../services/logger.service')
 async function getBoards(req, res) {
   try {
     logger.debug('Getting Boards 9')
-    // NOTE-filters in the front
-    // const filterBy = {
-    //   txt: req.query?.txt || ''
-    // }
+   
     const boards = await boardService.query()
     res.json(boards)
   } catch (err) {
@@ -17,12 +14,12 @@ async function getBoards(req, res) {
     res.status(500).send({ err: 'Failed to get boards' })
   }
 }
-// by arnon:working in postman 6.12
+
 async function getBoardById(req, res) {
   try {
     const boardId = req.params.id
     const board = await boardService.getBoardById(boardId)
-    // console.log(board)
+   
     res.json(board)
   } catch (err) {
     logger.error('Failed to get board', err)
@@ -34,7 +31,6 @@ async function updateBoard(req, res) {
   
   try {
     const board = req.body
-    // console.log(req.body)
     const updatedBoard = await boardService.update(board)
     res.json(updatedBoard)
   } catch (err) {
@@ -43,12 +39,11 @@ async function updateBoard(req, res) {
 
   }
 }
-// by arnon:not necc meanwhile 6.12 
+
 async function addBoard(req, res) {
 
   try {
     const board = req.body
-    // board.owner = loggedinUser
     const boardId = await boardService.add(board)
     res.json(boardId)
   } catch (err) {
@@ -57,7 +52,6 @@ async function addBoard(req, res) {
   }
 }
 
-// by arnon:not necc meanwhile 6.12 
 async function removeBoard(req, res) {
   try {
     const boardId = req.params.id
@@ -69,7 +63,6 @@ async function removeBoard(req, res) {
   }
 }
 
-// by arnon:not necc meanwhile 6.12
 async function addBoardMsg(req, res) {
   const {loggedinUser} = req
   try {
@@ -87,7 +80,6 @@ async function addBoardMsg(req, res) {
   }
 }
 
-// by arnon:not necc meanwhile 6.12
 async function removeBoardMsg(req, res) {
   const {loggedinUser} = req
   try {

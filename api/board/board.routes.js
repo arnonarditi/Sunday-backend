@@ -1,5 +1,4 @@
 const express = require('express')
-// todo-connect the auth middlewares afterWords-by ref
 // const { requireAuth, requireAdmin } = require('../../middlewares/requireAuth.middleware')
 const { log } = require('../../middlewares/logger.middleware')
 
@@ -10,7 +9,6 @@ const router = express.Router()
 // middleware that is specific to this router
 // router.use(requireAuth)
 
-// todo-connect the auth middlewares afterWords-by ref
 router.get('/', getBoards)
 router.get('/:id', getBoardById)
 router.post('/' , addBoard)
