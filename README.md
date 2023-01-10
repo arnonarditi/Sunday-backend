@@ -1,4 +1,3 @@
-
 # Sunday
 
 Full-Stack project: Monday-clone app.
@@ -7,11 +6,13 @@ Some nice features:
 
 Socket.io, daynamic cmps,
 
-auth middleware, cookies,
+auth-middleware, cookies,
 
 all-over D&D(rows, columns, groups at the main-table ),
 
-kanban(mini Trello like origin), dashboard, etc.
+optimistic approach,
+
+kanban(mini Trello), dashboard, etc.
 
 
 ## Tech Stack
