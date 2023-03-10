@@ -1,12 +1,12 @@
 const boardService = require('./board.service.js')
-
+const socketService = require('../../services/socket.service')
 const logger = require('../../services/logger.service')
 
 
 async function getBoards(req, res) {
   try {
     logger.debug('Getting Boards 9')
-   
+
     const boards = await boardService.query()
     res.json(boards)
   } catch (err) {
@@ -19,7 +19,7 @@ async function getBoardById(req, res) {
   try {
     const boardId = req.params.id
     const board = await boardService.getBoardById(boardId)
-   
+
     res.json(board)
   } catch (err) {
     logger.error('Failed to get board', err)
@@ -28,15 +28,18 @@ async function getBoardById(req, res) {
 }
 
 async function updateBoard(req, res) {
+  const board = req.body
   
   try {
-    const board = req.body
     const updatedBoard = await boardService.update(board)
-    res.json(updatedBoard)
+    
+    if(updatedBoard){
+      socketService.emitTo({ type: 'load-curr-board', data: board, topic: board._id })
+      res.json(updatedBoard)
+    }
   } catch (err) {
     logger.error('Failed to update board', err)
     res.status(500).send({ err: 'Failed to update board' })
-
   }
 }
 
@@ -64,7 +67,7 @@ async function removeBoard(req, res) {
 }
 
 async function addBoardMsg(req, res) {
-  const {loggedinUser} = req
+  const { loggedinUser } = req
   try {
     const boardId = req.params.id
     const msg = {
@@ -81,10 +84,10 @@ async function addBoardMsg(req, res) {
 }
 
 async function removeBoardMsg(req, res) {
-  const {loggedinUser} = req
+  const { loggedinUser } = req
   try {
     const boardId = req.params.id
-    const {msgId} = req.params
+    const { msgId } = req.params
 
     const removedId = await boardService.removeBoardMsg(boardId, msgId)
     res.send(removedId)

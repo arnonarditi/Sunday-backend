@@ -35,7 +35,7 @@ async function update(board) {
 
         await collection.updateOne({ _id: id }, { $set: { ...board } })
         board._id = temp
-        return
+        return board
     } catch (err) {
         logger.error(`cannot update board ${board._id}`, err)
         throw err

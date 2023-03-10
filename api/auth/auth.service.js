@@ -18,7 +18,6 @@ async function login(username, password) {
     return user
 }
     
-
 async function signup({username, password, fullname, imgUrl}) {
     const saltRounds = 10
 
